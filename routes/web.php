@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -91,8 +92,66 @@ Route::get('/posts', function () {
     //$posts = \App\Post::with(['user','tags'])->get();
     $posts = \App\Post::with(['user','tags'])->first();
          //$posts->tags()->detach([2]);
-    $posts->tags()->sync([2,3]);
+//    \App\Tag::create([
+//        'name'=>"Laravel"
+//    ]);
+//    $posts->tags()->sync([1=>[
+//        'status'=>'approved'
+//    ]]);
+    $posts->tags()->detach([1=>[
+        'status'=>'approved'
+    ]]);
+
     return view("posts.index",compact('posts'));
 
 });
 
+Route::get('/tags', function () {
+
+//    $tags = \App\Tag::with("posts")->get();
+//    return view("tags.index",compact('tags'));
+});
+
+Route::get('/projects', function () {
+//    $project=\App\Project::create([
+//        'title'=>"Project B"
+//    ]);
+//    $user3= \App\User::create([
+//        'name'=>"user3",
+//        "email"=>"user3@example.com",
+//        "password"=> Hash::make('password'),
+//        "project_id"=>$project->id
+//        ]);
+//    $user4=\App\User::create([
+//        'name'=>"user4",
+//        "email"=>"user4@example.com",
+//        "password"=> Hash::make('password'),
+//        "project_id"=>$project->id
+//    ]);
+//    $user5=\App\User::create([
+//        'name'=>"user5",
+//        "email"=>"user5@example.com",
+//        "password"=> Hash::make('password'),
+//        "project_id"=>$project->id
+//    ]);
+//
+//    $task1 = \App\Task::create([
+//        'title'=>"Task1 for user3 project B",
+//        'user_id'=>$user3->id
+//    ]);
+//    $task2 = \App\Task::create([
+//        'title'=>"Task3 for user1 project B",
+//        'user_id'=>$user3->id
+//    ]);
+//    $task3 = \App\Task::create([
+//        'title'=>"Task4 for user4 project B",
+//        'user_id'=>$user4->id
+//    ]);
+//    $task4 = \App\Task::create([
+//        'title'=>"Task4 for user5 project B",
+//        'user_id'=>$user5->id
+//    ]);
+
+    $project = \App\Project::find(1);
+    return $project->tasks;
+});

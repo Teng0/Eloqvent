@@ -8,9 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-
+{{$posts}}
     @foreach($posts as $post)
-        {{$post}}
+{{--        {{$post}}--}}
 {{--        <h2>{{$post->title}}</h2>--}}
 {{--        <p>{{$post->user->name}}</p>--}}
 {{--        <ul>--}}
