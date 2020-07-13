@@ -18,5 +18,8 @@ class Post extends Model
         return $this->belongsToMany(Tag::class,'post_tag','post_id','tag_id')->using(PostTag::class)->withTimestamps()->withPivot('status');
 
     }
+    public  function comments(){
+        return $this->morphMany(Comment::class,'commentable');//rac gvoweroa migration tableshi
+    }
 
 }

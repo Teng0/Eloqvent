@@ -155,3 +155,102 @@ Route::get('/projects', function () {
     $project = \App\Project::find(1);
     return $project->tasks;
 });
+
+Route::get('/projects2', function () {
+//
+//    $project1=\App\Project::create([
+//        'title'=>"Project A"
+//    ]);
+//
+//    $project2=\App\Project::create([
+//        'title'=>"Project B"
+//    ]);
+//
+//    $user1= \App\User::create([
+//        'name'=>"user1",
+//        "email"=>"user1@example.com",
+//        "password"=> Hash::make('password'),
+//        ]);
+//
+//    $user2= \App\User::create([
+//        'name'=>"user2",
+//        "email"=>"user2@example.com",
+//        "password"=> Hash::make('password'),
+//    ]);
+//    $user3= \App\User::create([
+//        'name'=>"user3",
+//        "email"=>"user3@example.com",
+//        "password"=> Hash::make('password'),
+//
+//    ]);
+//
+//    $project1->users()->attach($user1);
+//    $project1->users()->attach($user2);
+//    $project1->users()->attach($user3);
+//
+//    $project2->users()->attach($user1);
+//    $project2->users()->attach($user3);
+
+// $project1= \App\Project::find(1);
+// return $project1->users;
+
+
+//    \App\Task::create([
+//        "title"=>"Task A",
+//        'user_id'=>1
+//    ]);
+//
+//    \App\Task::create([
+//        "title"=>"Task B",
+//        'user_id'=>1
+//    ]);
+//    \App\Task::create([
+//        "title"=>"Task A",
+//        'user_id'=>2
+//    ]);
+//    \App\Task::create([
+//        "title"=>"Task A",
+//        'user_id'=>3
+//    ]);
+
+    $project =\App\Project::find(1);
+   // dd($project->users);
+  // return $project->tasks;
+
+  $user=  \App\User::find(1);
+  return $project->tasks;
+});
+
+Route::get('/comments', function () {
+//    $user1= \App\User::create([
+//        'name'=>"user1",
+//        "email"=>"user1@example.com",
+//        "password"=> Hash::make('password'),
+//        ]);
+//    $post = \App\Post::create([
+//        "user_id"=>1,
+//        "title"=>"Title 1"
+//    ]);
+//    $post=\App\Post::find(1)->comments()::create([
+//        "user_id"=>1,
+//        "body"=>"Comment for post"
+//    ]);
+
+//    $post=\App\Post::find(1);
+//    //$post->comments()->create(['user_id'=>1,"body"=>"comment for post"]);
+//    $post->comments()->create(['user_id'=>1,"body"=>"comment for post2"]);
+//    return $post->comments;
+
+    $video = \App\Video::create([
+        'user_id'=>1,
+        "title"=>"User 1 Video"
+    ]);
+    $video->comments()->create([
+        'user_id'=>1,
+        'body'=>"video Body for user 1"
+    ]);
+
+    return $video->comments;
+
+
+});

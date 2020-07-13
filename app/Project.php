@@ -8,9 +8,17 @@ class Project extends Model
 {
     protected $guarded=[];
     public  function users(){
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class);
     }
+
     public   function tasks(){
-        return $this->hasManyThrough(Task::class,User::class);
+
+
+        return $this->hasManyThrough(
+            Task::class,
+            Team::class,
+            'project_id',
+            'user_id'
+        );
     }
 }
