@@ -254,3 +254,21 @@ Route::get('/comments', function () {
 
 
 });
+
+Route::get('/PostTags', function () {
+//    $post = \App\Post::create([
+//        'user_id'=>1,
+//        "title"=>"Post Tag"
+//    ]);
+//    $post->tags()->create([
+//        'name'=>"laravel"
+ //   ]);
+//
+
+    $video = \App\Video::create([
+        'title'=>"Video Title 1"
+    ]);
+    $tag = \App\Tag::find(1);
+
+    $video->tags()->attach($tag);
+});
